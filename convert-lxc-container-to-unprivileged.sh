@@ -11,6 +11,9 @@ declare -r USERNS_START=${2?${USAGE}}
 
 declare -r LXC_PATH=${LXC_PATH:-"/var/lib/lxc"}
 declare -r BACKUP_DIR=${BACKUP_DIR:-"/root/backup-lxc"}
+declare -r FUIDSHIFT=${FUIDSHIFT:-"$(dirname $(readlink -f $0))/fuidshift"}
+
+
 declare -r CONTAINER_BACKUP="${BACKUP_DIR}/${CONTAINER}-$(date +%Y%m%d-%H%M%S).tar.gz"
 
 if [ $(id -u) != 0 ] ; then
@@ -38,7 +41,7 @@ echo "you may restore it with: tar --numeric-owner -xzf ${CONTAINER_BACKUP} -C /
 
 
 echo "converting file system"
-fuidshift "${LXC_PATH}/${CONTAINER}/rootfs" b:0:"${USERNS_START}:65536"
+"${FUIDSHIFT}" "${LXC_PATH}/${CONTAINER}/rootfs" b:0:"${USERNS_START}:65536"
 chown "${USERNS_START}:${USERNS_START}" "${LXC_PATH}/${CONTAINER}"
 
 
