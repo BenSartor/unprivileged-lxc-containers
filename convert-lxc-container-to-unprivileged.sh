@@ -10,7 +10,7 @@ declare -r USERNS_START=${1?${USAGE}}
 
 
 declare -r LXC_PATH="/var/lib/lxc"
-declare -r BACKUP_DIR="/root/backup-lxc"
+declare -r BACKUP_DIR=${BACKUP_DIR:-"/root/backup-lxc"}
 declare -r CONTAINER_BACKUP="${BACKUP_DIR}/${CONTAINER}-$(date +%Y%m%d-%H%M%S).tar.gz"
 
 if [ $(id -u) != 0 ] ; then
