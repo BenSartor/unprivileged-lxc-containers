@@ -9,7 +9,7 @@ declare -r CONTAINER=${1?${USAGE}}
 declare -r USERNS_START=${1?${USAGE}}
 
 
-declare -r LXC_PATH="/var/lib/lxc"
+declare -r LXC_PATH=${LXC_PATH:-"/var/lib/lxc"}
 declare -r BACKUP_DIR=${BACKUP_DIR:-"/root/backup-lxc"}
 declare -r CONTAINER_BACKUP="${BACKUP_DIR}/${CONTAINER}-$(date +%Y%m%d-%H%M%S).tar.gz"
 
