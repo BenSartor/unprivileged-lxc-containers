@@ -6,7 +6,7 @@ set -eu -o pipefail
 declare -r USAGE="Usage example: $0 container 1258512"
 
 declare -r CONTAINER=${1?${USAGE}}
-declare -r USERNS_START=${1?${USAGE}}
+declare -r USERNS_START=${2?${USAGE}}
 
 
 declare -r LXC_PATH=${LXC_PATH:-"/var/lib/lxc"}
