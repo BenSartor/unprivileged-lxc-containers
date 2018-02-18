@@ -32,7 +32,7 @@ lxc-stop -n "${CONTAINER}"
 
 echo "create a backup: \"${CONTAINER_BACKUP}\""
 mkdir -p "${BACKUP_DIR}"
-tar -czf "${CONTAINER_BACKUP}" "${LXC_PATH}/${CONTAINER}" 
+tar -czf "${CONTAINER_BACKUP}" "${LXC_PATH}/${CONTAINER}"
 echo "you may restore it with: tar --numeric-owner -xzf ${CONTAINER_BACKUP} -C /"
 
 
