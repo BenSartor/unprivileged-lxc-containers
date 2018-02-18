@@ -11,6 +11,7 @@ declare -r USERNS_START=${2?${USAGE}}
 
 declare -r LXC_PATH=${LXC_PATH:-"/var/lib/lxc"}
 declare -r BACKUP_DIR=${BACKUP_DIR:-"/root/backup-lxc"}
+## build the binary with: go get -v -x github.com/lxc/lxd/fuidshift
 declare -r FUIDSHIFT=${FUIDSHIFT:-"$(dirname $(readlink -f $0))/fuidshift"}
 
 
