@@ -131,3 +131,30 @@ You may still create and use privileged containers on the same host.
 ```
 lxc-create -n sid-privileged --config /etc/lxc/default-privileged.conf -t download -- --dist debian --release sid --arch amd64
 ```
+
+
+# AppArmor
+AppArmor will be enabled by default in [buster](https://wiki.debian.org/AppArmor/Progress). But it makes sense to [enable](https://wiki.debian.org/AppArmor/HowToUse) it in stretch, too.
+```
+apt install apparmor apparmor-utils
+mkdir /etc/default/grub.d
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT apparmor=1 security=apparmor"' | sudo tee /etc/default/grub.d/apparmor.cfg
+update-grub
+```
+
+Update the default config for AppArmor
+```
+cat <<EOF >> /etc/lxc/default.conf
+
+## AppArmor stretch
+lxc.aa_allow_incomplete = 1
+EOF
+
+cat <<EOF >> /etc/lxc/default-privileged.conf
+
+## AppArmor stretch
+lxc.aa_allow_incomplete = 1
+EOF
+```
+
+Of course we need to update the config of every container, too.
