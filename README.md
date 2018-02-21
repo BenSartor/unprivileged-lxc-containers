@@ -62,7 +62,8 @@ The next three lines show how you create an unprivileged container, start it and
 lxc-create -n unpriv -t download -- --dist debian --release stretch --arch amd64
 
 lxc-start -d -n unpriv
-lxc-destroy -d unpriv
+lxc-stop -n unpriv
+lxc-destroy -n unpriv
 ```
 
 
