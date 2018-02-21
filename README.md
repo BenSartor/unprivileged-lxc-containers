@@ -15,7 +15,7 @@ That means uid 0 in the container is mapped to e.g. uid 100000 on the host.
 Therefore he would become the user nobody on the host if he manages to escape the container.
 
 
-## debian stretch
+## Debian stretch
 By default debian uses privileged LXC containers. But it supports [unprivileged](https://wiki.debian.org/LXC#Unprivileged_container) ones, too.
 Unprivileged containers may be started as normal user.
 But if you want to start them at boot, it is suggested to start them as root.
@@ -66,12 +66,12 @@ lxc-destroy -d unpriv
 ```
 
 
-## convert privileged containers to unprivileged
+## Convert privileged containers to unprivileged
 If you are like me and are using LXC containers since years, you probably have a lot of privileged containers you might want to convert to unprivileged ones.
 Therefore it is needed to adjust the user and group ids of all files in the container.
 Luckily the people of LXD wrote a tool for this: fuidshift
 
-### get fuidshift
+### Get fuidshift
 Unfortunatly fuidshift is not packaged in debian. So we have to compile it from source.
 But as it is go, you may simply deploy the binary by coping it.
 There is no need to compile it on every server.
@@ -80,7 +80,7 @@ go get -v -x github.com/lxc/lxd/fuidshift
 scp go/bin/fuidshift root@host:
 ```
 
-### stop & backup container
+### Stop & backup container
 Of course you need to stop the container before converting it.
 And a backup is always recommended.
 ```
@@ -92,7 +92,7 @@ Just in case you need to restore the backup, this is your command.
 tar --numeric-owner -xzf /root/backup-lxc/stretch.tar.gz -C /
 ```
 
-### shift user and group ids
+### Shift user and group ids
 Now it is time to call fuidshift:
 ```
 ./fuidshift /var/lib/lxc/stretch/rootfs b:0:1258512:65536
@@ -123,7 +123,7 @@ And yes it is ugly, but I checked in the fuidshift amd64 binary.
 So I only needed to checkout this repo and have everything in place to convert the containers on my servers.
 
 
-# privileged containers
+# Privileged containers
 Restricting the rights of a container reduces the possibilities to use it.
 E.g. ```deboostrap``` does not run in an unprivileged container.
 You may still create and use privileged containers on the same host.
