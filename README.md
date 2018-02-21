@@ -118,7 +118,7 @@ Now it is time to start the converted container again.
 lxc-start -d -n stretch
 ```
 
-As I had to convert two handful of containers, I wrote a little bash script automating the steps above.
+As I had to convert two handful of containers, I wrote a little bash [script](convert-lxc-container-to-unprivileged.sh) automating the steps above.
 And yes it is ugly, but I checked in the fuidshift amd64 binary.
 So I only needed to checkout this repo and have everything in place to convert the containers on my servers.
 
