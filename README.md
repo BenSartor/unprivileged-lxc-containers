@@ -134,7 +134,7 @@ lxc-create -n sid-privileged --config /etc/lxc/default-privileged.conf -t downlo
 
 
 # AppArmor
-AppArmor will be enabled by default in [buster](https://wiki.debian.org/AppArmor/Progress). But it makes sense to [enable](https://wiki.debian.org/AppArmor/HowToUse) it in stretch, too.
+AppArmor will be enabled by default in [buster](https://wiki.debian.org/AppArmor/Progress) and it makes sense to [enable](https://wiki.debian.org/AppArmor/HowToUse) it in stretch, too, especially if you run privileged containers.
 ```
 apt install apparmor apparmor-utils
 mkdir /etc/default/grub.d
