@@ -138,7 +138,7 @@ AppArmor will be enabled by default in [buster](https://wiki.debian.org/AppArmor
 ```
 apt install apparmor apparmor-utils
 mkdir /etc/default/grub.d
-echo 'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT apparmor=1 security=apparmor"' | sudo tee /etc/default/grub.d/apparmor.cfg
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT apparmor=1 security=apparmor"' > /etc/default/grub.d/apparmor.cfg
 update-grub
 ```
 
